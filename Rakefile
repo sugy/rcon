@@ -1,6 +1,6 @@
 require 'fileutils'
 
-MRUBY_VERSION=ENV["MRUBY_VERSION"] || "c3188cac431225fda48718f309ad3d9318a6e44f"
+MRUBY_VERSION=ENV["MRUBY_VERSION"] || "3.0.0"
 file :mruby do
   cmd =  "git clone git://github.com/mruby/mruby.git"
   case MRUBY_VERSION
