@@ -1,15 +1,21 @@
-# build on centos6 for glibc 2.12 or earlier
-glibc-2.12:
-  dockerfile: Dockerfile.glibc-2.12
-  build: .
-  volumes:
-    - .:/home/mruby/code:rw
-  command: rake compile
+version: "3"
+services:
+  # build on centos6 for glibc 2.12 or earlier
+  glibc-2.12:
+    build:
+      context: .
+      dockerfile: Dockerfile.glibc-2.12
+    volumes:
+      - .:/home/mruby/code:rw
+    working_dir: /home/mruby/code
+    command: rake compile
 
-# build on ubuntu 14_04 for glibc 2.14 or later binary like centos7
-glibc-2.14:
-  dockerfile: Dockerfile.glibc-2.14
-  build: .
-  volumes:
-    - .:/home/mruby/code:rw
-  command: rake compile
+  # build on ubuntu 14_04 for glibc 2.14 or later binary like centos7
+  glibc-2.14:
+    build:
+      context: .
+      dockerfile: Dockerfile.glibc-2.14
+    volumes:
+      - .:/home/mruby/code:rw
+    working_dir: /home/mruby/code
+    command: rake compile

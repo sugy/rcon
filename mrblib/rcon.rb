@@ -35,7 +35,7 @@ def __main__(argv)
   raise ArgumentError, "don't use both --user and --pids" if ! opts[:user].empty? && ! opts[:pids].empty?
   raise ArgumentError, "user not found: --user" if opts[:user].empty? && opts[:pids].empty?
 
-  Rcon.new({
+  ret = Rcon.new({
     :command  => opts[:pids].empty? ? opts[:command] : nil,
     :pids     => opts[:pids].empty? ? nil : opts[:pids].split(" ").map(&:to_i),
     :user     => opts[:pids].empty? ? opts[:user] : nil,
@@ -52,5 +52,5 @@ def __main__(argv)
       :oom        => true,
     },
   }).run
-  opts
+  raise Rconner::ExecuteError.new("Command failed: #{opts[:command]}") unless ret
 end

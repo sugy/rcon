@@ -1,6 +1,6 @@
 def gem_config(conf)
   conf.gembox 'full-core'
-  conf.gem :mgem => "mruby-rcon"
+  conf.gem :github => "sugy/mruby-rcon", :branch => 'tmp'
   conf.gem :mgem => "mruby-env"
   conf.gem :mgem => "mruby-getopts"
 
